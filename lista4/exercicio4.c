@@ -15,11 +15,24 @@ float calculaSalario(float *horas);
 
 int main(){
 
-    float hora, salario;
+    float hora = 0.0;
+    float *pHora = NULL;
+    pHora = &hora;
 
-
-
+    printf("Digite o total de horas trabalhadas: ");
+    scanf("%f", &hora); 
+    printf("O salario recebido eh de %.2f reais\n", calculaSalario(pHora));
 
     return 0;
+}
+
+float calculaSalario (float *horas){
+
+    if((*horas) < 40){
+        return ((*horas) * 8);
+    } else{
+        return (320 + (12 * (*horas)));
+    }
+
 }
 
