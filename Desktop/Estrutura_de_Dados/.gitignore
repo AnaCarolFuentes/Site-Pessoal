@@ -1,0 +1,6 @@
+# Ignorar a pasta Desktop
+Desktop/
+
+# Ignorar arquivos e pastas temporárias do sistema operacional
+.DS_Store
+Thumbs.db
