@@ -24,14 +24,14 @@ typedef struct stack
 
 } Stack;
 
-int inserirNode (Stack * stack, Node * node);
-int inserirNaLista (List * list, int dado);
+int insereNode (Stack * stack, Node * node);
+int insereNaLista (List * list, int dado);
 int inicializaPilha(Stack * stack);
 int inicializaLista (List * list);
-int InserirNaPilha  (List * list, Stack * stack);
+int InsereNaPilha  (List * list, Stack * stack);
 int imprimeLista (List * list);
 int imprimePilha (Stack * stack);
-List * concatenar (List * list1, List * list2);
+List * concatena (List * list1, List * list2);
 Node * achaIntersecao (Stack * stack1, Stack * stack2);
 Node * topoPilha (Stack * stack);
 int popStack(Stack * stack);
@@ -43,54 +43,69 @@ int main()
     Stack pilha2;
     List lista1;
     List lista2;
-    List lista3;
+    List lista_aux;
 
-
+    //Inicializa todas as estruturas criadas
     inicializaLista(&lista1);
     inicializaLista(&lista2);
-    inicializaLista(&lista3);
+    inicializaLista(&lista_aux);
     inicializaPilha(&pilha1);
     inicializaPilha(&pilha2);
 
+    //Insere elementos na lista 1
+    insereNaLista(&lista1, 1);
+    insereNaLista(&lista1, 2);
+    insereNaLista(&lista1, 3);
 
-    inserirNaLista(&lista1, 1);
-    inserirNaLista(&lista1, 2);
-    inserirNaLista(&lista1, 3);
+    //Insere elementos em uma lista auxiliar para criar a interseção 
+    insereNaLista(&lista_aux, 7);
+    insereNaLista(&lista_aux, 5);
+    insereNaLista(&lista_aux, 10);
 
-    inserirNaLista(&lista3, 7);
-    inserirNaLista(&lista3, 5);
-    inserirNaLista(&lista3, 10);
+    //Concatena a lista 1 e a lista auxiliar
+    concatena(&lista1, &lista_aux);
 
-    concatenar(&lista1, &lista3);
+    //Imprime lista 1
     printf("-------Lista 1----------\n");
     imprimeLista(&lista1);
     getchar();
 
+     //Insere elementos na lista 2
+    insereNaLista(&lista2, 50);
+    insereNaLista(&lista2, 20);
 
-    inserirNaLista(&lista2, 50);
-    inserirNaLista(&lista2, 20);
-    concatenar(&lista2, &lista3);
+    //Concatena a lista 2 e a lista auxiliar
+    concatena(&lista2, &lista_aux);
+
+    //Imprime lista 2
     printf("-------Lista 2----------\n");
     imprimeLista(&lista2);
     getchar();
 
-    InserirNaPilha (&lista1, &pilha1);
+    //Insere elementos da lista 1 na pilha 1
+    InsereNaPilha (&lista1, &pilha1);
+
+    //Imprime pilha 1
     printf("-------Pilha 1----------\n");
     imprimePilha(&pilha1);
     getchar();
 
-    InserirNaPilha (&lista2, &pilha2);
+    //Insere elementos da lista 2 na pilha 2
+    InsereNaPilha (&lista2, &pilha2);
+
+    //Imprime pilha 2
     printf("-------Pilha 2----------\n");
     imprimePilha(&pilha2);
     getchar();
 
+    //Exibe a interseção entre as duas listas
     printf("-------------------------------\n");
     printf("Intersecao: %x\n", achaIntersecao(&pilha1, &pilha2));
 
    return 0;
 }
 
-int inserirNode (Stack * stack, Node * node)
+int insereNode (Stack * stack, Node * node)
 {
     Stack * novo = (Stack*) malloc(sizeof(Stack));
     if(novo == NULL)
@@ -117,7 +132,7 @@ int inicializaLista(List * list)
     return 1;
 }
 
-int inserirNaLista(List * list, int dado)
+int insereNaLista(List * list, int dado)
 {
     Node * novo = (Node*) malloc (sizeof(Node));
    
@@ -142,7 +157,7 @@ int inserirNaLista(List * list, int dado)
     return 1;
 }
 
-int InserirNaPilha (List * list, Stack * stack)
+int InsereNaPilha (List * list, Stack * stack)
 {
     Node * aux = list->inicio;
     if(aux == NULL)
@@ -150,7 +165,7 @@ int InserirNaPilha (List * list, Stack * stack)
 
     while(aux != NULL)
     {
-        inserirNode(stack, aux);
+        insereNode(stack, aux);
         aux = aux->proximo;
     }
 
@@ -227,7 +242,7 @@ Node * achaIntersecao (Stack * stack1, Stack * stack2)
 
 }
 
-List * concatenar (List * list1, List * list2)
+List * concatena (List * list1, List * list2)
 {
     if(list1->inicio == NULL)
         return list2;
