@@ -113,8 +113,8 @@ int insereNoFim (Lista * lista, int dado)
 //Inicializa a lista
 int inicializaLista (Lista * lista)
 {
-    lista->inicio == NULL;
-    lista->fim == NULL;
+    lista->inicio = NULL;
+    lista->fim = NULL;
     lista->tam = 0;
     return 1;
 }
@@ -139,37 +139,38 @@ Lista * concatena (Lista * list1, Lista * list2)
 Lista * separa (Lista * list, int l)
 {
     int i;
-    int cont = 0;
-    int entrou = 0;
 
-    if(list->inicio == NULL || list->tam == 1)
+    if(l < 2 || l >= list->tam)
     {
         return NULL;
     }
 
     Lista * novaLista = (Lista*) malloc (sizeof(Lista));
-    Node * aux = list->inicio;
-    cont++;
 
-    while(aux->dado != l && aux != NULL)
-    {
-        entrou = 1;
-        aux = aux->proximo;
-        cont++;
-    }
-
-    if(entrou == 0)
+    if(novaLista == NULL)
         return NULL;
+    
+    inicializaLista(novaLista);
+
+    Node * aux = list->inicio;
+
+    for(i = 1; i < l; i++)
+    {
+        aux = aux->proximo;
+    }
 
     novaLista->inicio = aux->proximo;
     novaLista->fim = list->fim;
+    int auxTam = list->tam;
     list->fim = aux;
-    novaLista->tam = list->tam - cont;
-    list->tam = cont;
+    list->fim->proximo = NULL;
+    novaLista->tam = list->tam - l;
+    list->tam = l;
     return novaLista;
 
 }
 
+//Imprime a lista
 int imprimeLista(Lista * list)
 {
     int cont = 1;
