@@ -1,6 +1,7 @@
 /*Ana Carolina Fuentes*/
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef struct node
 {
@@ -22,14 +23,19 @@ int inicializaLista (Lista *);
 Lista * concatena (Lista *, Lista *);
 int imprimeLista(Lista *);
 Lista * separa (Lista *, int);
+void mensagemListaVazia (char []);
+void mensagemSepararLista (char []);
 
 int main()
 {
 
     Lista l1;
+    int resultado;
 
+    //inicializa uma lista criada
     inicializaLista(&l1);
 
+    //insere elementos no início da lista criada
     insereNoInicio(&l1, 1);
     insereNoInicio(&l1, 2);
     insereNoInicio(&l1, 3);
@@ -37,18 +43,26 @@ int main()
     insereNoInicio(&l1, 5);
     insereNoInicio(&l1, 6);
 
+    //insere elementos no fim da lista criada
     insereNoFim(&l1, 7);
     insereNoFim(&l1, 9);
     insereNoFim(&l1, 10);
 
+    //imprime a lista criada
     printf("\n----------Imprimindo Lista1------------\n");
     imprimeLista(&l1);
     printf("\n---------------------------------------\n");
 
-    Lista * novaLista = separa(&l1, 4);
+
+    //cria outra lista para guardar o endereço recebido da função separa()
+    //A funçao separa vai retornar um endereço para um subconjunto da lista 1
+    Lista * novaLista = separa(&l1, 50);
+
+    //imprime a lista 1 depois de ser separada
     printf("\n----------Imprimindo Lista1------------\n");
     imprimeLista(&l1);
     printf("\n---------------------------------------\n");
+
     printf("\n----------Imprimindo subconjunto de Lista 1------------\n");
     imprimeLista(novaLista);
     printf("\n---------------------------------------\n");
@@ -122,13 +136,20 @@ int inicializaLista (Lista * lista)
 //Concatena duas listas
 Lista * concatena (Lista * list1, Lista * list2)
 {
-    if(list1->inicio == NULL)
+    if(list1->inicio == NULL && list2->inicio == NULL)
+    {
+        mensagemListaVazia("concatenar");
+        return NULL;
+    }
+
+    else if(list1->inicio == NULL)
         return list2;
 
 
-    if(list2->inicio == NULL)
+    else if(list2->inicio == NULL)
         return list1;
 
+    
 
     list1->fim->proximo = list2->inicio;
     list1->fim = list2->fim;
@@ -142,6 +163,7 @@ Lista * separa (Lista * list, int l)
 
     if(l < 2 || l >= list->tam)
     {
+        mensagemSepararLista("separar");
         return NULL;
     }
 
@@ -175,7 +197,10 @@ int imprimeLista(Lista * list)
 {
     int cont = 1;
     if(list->inicio == NULL)
+    {
+        mensagemListaVazia("imprimir");
         return 0;
+    }
     
     Node * aux = list->inicio;
 
@@ -186,6 +211,17 @@ int imprimeLista(Lista * list)
     }
     return 1;
 }
+
+void mensagemListaVazia (char mensagem[])
+{
+    printf("Nao foi possivel %s na lista, pois a lista esta vazia\n", mensagem);
+}
+
+void mensagemSepararLista (char mensagem[])
+{
+    printf("Nao foi possivel %s a lista\n", mensagem);
+}
+
 
 
 
