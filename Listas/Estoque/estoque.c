@@ -273,7 +273,7 @@ int atualizarQuantidade (Lista * lista, int codigo, int novaQuantidade)
 {
     if(lista->inicio == NULL)
     {
-        mensagemListaVazia("Atualizar quantidade");
+        mensagemListaVazia("atualizar quantidade");
         return -1;
     }
 
