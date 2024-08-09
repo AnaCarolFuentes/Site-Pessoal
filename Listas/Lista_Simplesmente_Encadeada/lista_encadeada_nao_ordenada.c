@@ -56,7 +56,7 @@ int main()
 
     //cria outra lista para guardar o endereço recebido da função separa()
     //A funçao separa vai retornar um endereço para um subconjunto da lista 1
-    Lista * novaLista = separa(&l1, 50);
+    Lista * novaLista = separa(&l1, 5);
 
     //imprime a lista 1 depois de ser separada
     printf("\n----------Imprimindo Lista1------------\n");
