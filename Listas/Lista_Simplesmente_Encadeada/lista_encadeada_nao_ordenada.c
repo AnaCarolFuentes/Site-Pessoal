@@ -22,7 +22,7 @@ int insereNoFim (Lista *, int);
 int inicializaLista (Lista *);
 Lista * concatena (Lista *, Lista *);
 int imprimeLista(Lista *);
-Lista * separa (Lista *, int);
+Lista * separaPosicao (Lista *, int);
 void mensagemListaVazia (char []);
 void mensagemSepararLista (char []);
 
@@ -156,8 +156,8 @@ Lista * concatena (Lista * list1, Lista * list2)
         return list1;
 }
 
-//Separa duas listas
-Lista * separa (Lista * list, int l)
+//Separa duas listas pela posicao
+Lista * separaPosicao (Lista * list, int l)
 {
     int i;
 
