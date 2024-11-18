@@ -1,0 +1,80 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header
+{
+    height: 200px;
+    background-color: rgb(174, 240, 252, 0.25);
+    border-color: black;
+    border-radius: 3%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+}
+
+.text_header
+{
+    font-family: 'Franklin Gothic Medium';
+    font-style: oblique;
+}
+
+.home_page
+{
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    justify-content: center;
+    text-align: center;
+}
+
+.text_page
+{
+    margin-top: 30px;
+    font-family:'Geneva';
+    font-size: larger;
+    font-style: oblique;
+    text-align: center;
+    align-items: center;
+}
+
+.subtitulo_page
+{
+    font-family:'Geneva';
+    font-size: larger;
+    font-style: oblique;
+    text-align: center;
+    align-items: center;
+}
+
+.navegacao {
+    background-color: rgba(163, 243, 243, 0.8); /* Fundo verde-água */
+    padding: 10px 20px;
+}
+
+.nav-links {
+    list-style: none; /* Remove as bolinhas da lista */
+    display: flex; /* Alinha os itens em linha */
+    justify-content: space-around; /* Espaço igual entre os itens */
+    margin: 0; /* Remove a margem padrão da lista */
+    padding: 0; /* Remove o padding padrão da lista */
+    
+    
+}
+
+.nav-link {
+    text-decoration: none; /* Remove o sublinhado */
+    font-family: 'Geneva', sans-serif; /* Fonte Geneva */
+    border: 2px solid transparent; /* Borda inicial transparente */
+    border-radius: 5px; /* Bordas arredondadas */
+    padding: 10px 15px; /* Adiciona padding para melhorar a aparência */
+    transition: border-color 0.3s, color 0.3s; /* Transições suaves */
+}
+.nav-link:hover {
+    color: #15e3f1; /* Cor do texto ao passar o mouse */
+}
+
