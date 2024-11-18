@@ -1,0 +1,48 @@
+/* Reset e box model */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Barra de navegação */
+.navbar {
+    height: 10vh;
+    background-color: rgb(49, 49, 49);
+    display: flex;
+    align-items: center; /* Centraliza os itens verticalmente */
+    justify-content: space-between; /* Espaço entre logo e lista */
+    padding: 0 20px; /* Espaço interno lateral */
+}
+
+/* Logo */
+.logo {
+    font-family: 'Dancing Script', cursive;
+    font-size: 36px;
+    color: #ffffff;
+}
+
+/* Lista de navegação */
+.nav-list {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+/* Itens individuais da lista */
+.item-list a {
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+    padding: 10px 15px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Efeito hover */
+.item-list a:hover {
+    color: #15e3f1;
+    border-color: #15e3f1;
+}
